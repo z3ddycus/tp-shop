@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+    branches: main
+
+jobs:
+    build-front:
+        runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ./shop-client
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Linter
+              run: npm run lint
+
+            - name: Build
+              run: npm run build
+
+            - name: Docker build
+              run: docker build .
+
+    build-back:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./shop-server
+
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+        - name: Build
+          run: ./mvnw compile package
+
+        - name: Docker build
+          run: docker build .
