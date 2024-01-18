@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Formula;
-import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
-import org.hibernate.search.mapper.pojo.mapping.definition.annotation.GenericField;
-import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,7 +23,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "shops")
-@Indexed(index = "idx_shops")
 public class Shop {
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -39,13 +35,11 @@ public class Shop {
 
     @Column(nullable = false)
     @NotNull(message = "InVacations may not be null")
-    @GenericField
     private boolean inVacations;
 
     @Column(nullable = false)
     @Size(min = 1, max = 255, message = "Name must be between 1 and 255 characters")
     @NotNull(message = "Name may not be null")
-    @FullTextField
     private String name;
 
     @Formula(value = "(SELECT COUNT(DISTINCT pc.category_id) FROM products_categories pc "
