@@ -17,22 +17,10 @@ services:
       - ./shop-server/sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
     networks:
       - postgres
-    
-  elasticsearch:
-    container_name: shop-elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.1
-    hostname: "elasticsearch_docker"
-    environment:
-      discovery.type: single-node
-    ports:
-      - "9200:9200"
-    networks:
-      - postgres
 
   api:
     depends_on:
       - "db"
-      - "elasticsearch"
     container_name: shop-server
     build: ./shop-server
     ports:

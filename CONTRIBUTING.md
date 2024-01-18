@@ -41,12 +41,12 @@ Merci beaucoup de nous avoir autorisé à l´utiliser <3
 
 ### Maintainers
 Ce repository est maintenu par :
-Hugo Mochet https://github.com/Ydrasil
-Yohann Henry https://github.com/z3ddycus
+- Hugo Mochet https://github.com/Ydrasil
+- Yohann Henry https://github.com/z3ddycus
 
 ### Contributors
 Liste des contributions par ordre alphabétique.
 Format : Prénom Nom et optionnellement le github.
 
-Manon Guillard
-Yohann Henry https://github.com/z3ddycus
+- Manon Guillard
+- Yohann Henry https://github.com/z3ddycus
