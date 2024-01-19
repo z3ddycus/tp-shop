@@ -8,5 +8,5 @@ RUN ./mvnw package
 
 FROM eclipse-temurin:17-jre-jammy
 COPY --from=build /app/target/shop-app-0.0.1-SNAPSHOT.jar /shop-app.jar
-ENTRYPOINT ["java","-jar","shop-app.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=prod", "-jar","shop-app.jar"]
 EXPOSE 8080
