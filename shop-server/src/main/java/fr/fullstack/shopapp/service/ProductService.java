@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -57,7 +60,24 @@ public class ProductService {
         }
     }
 
-    public Page<Product> getShopProductList(Optional<Long> shopId, Optional<Long> categoryId, Pageable pageable) {
+    public Page<Product> getShopProductList(Optional<String> name, Optional<Long> shopId, Optional<Long> categoryId,
+            Pageable pageable) {
+        Map<Boolean, Page<Product>> conditions = new HashMap<>();
+        conditions.put(shopId.isPresent() && categoryId.isPresent(),
+                productRepository.findByShopAndCategory(shopId.get(), categoryId.get(), pageable));
+        conditions.put(shopId.isPresent(),
+                productRepository.findByShop(shopId.get(), pageable));
+        conditions.put(name.isPresent(),
+                productRepository.findByLocalizedProductName(name.get(), pageable));
+        return conditions.entrySet().stream()
+                .filter(Map.Entry::getKey)
+                .findFirst()
+                .map(Map.Entry::getValue)
+                .orElse(productRepository.findByOrderByIdAsc(pageable));
+    }
+
+    public Page<Product> getShopProductListBySorts(Optional<Long> shopId, Optional<Long> categoryId,
+            Pageable pageable) {
         if (shopId.isPresent() && categoryId.isPresent()) {
             return productRepository.findByShopAndCategory(shopId.get(), categoryId.get(), pageable);
         }
