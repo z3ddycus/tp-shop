@@ -1,7 +1,9 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Loader from './Loader';
+import React, { useState } from 'react';
 import SwitchLanguage from './SwitchLanguage';
+import LoginSignupModal from "./LoginSignupModal";
 
 type Props = {
     children: JSX.Element;
@@ -15,6 +17,14 @@ const navItems = [
 
 const Layout = ({ children }: Props) => {
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div>
@@ -34,9 +44,18 @@ const Layout = ({ children }: Props) => {
                     <Box>
                         <SwitchLanguage />
                     </Box>
+                    <Box>
+                        <Button
+                            sx={{ color: '#fff', marginLeft: 2 }}
+                            onClick={() => setIsModalOpen(true)}
+                        > LOGIN/SIGNUP
+                        </Button>
+                    </Box>
                 </Toolbar>
             </AppBar>
-
+            {isModalOpen && (
+                <LoginSignupModal isOpen={isModalOpen} onClose={handleCloseModal} />
+            )}
             <Loader />
             <div>{children}</div>
         </div>
