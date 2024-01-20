@@ -6,6 +6,7 @@ import { useAppContext, useToastContext } from '../context';
 import { ProductService } from '../services';
 import { FormattedProduct, Product } from '../types';
 import { formatterLocalizedProduct, priceFormatter } from '../utils';
+import ProductCardButton from '../components/ProductCartButton';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -80,7 +81,7 @@ const ProductDetails = () => {
                     "N'appartient à aucune boutique"
                 )}
             </Typography>
-            <Typography sx={{ mt: 1.5, fontStyle: 'italic' }}>
+            <Typography sx={{ mt: 1.5, mb: 3, fontStyle: 'italic' }}>
                 Catégories : {''}
                 {formattedProduct.categories.length === 0
                     ? 'Aucune'
@@ -93,6 +94,7 @@ const ProductDetails = () => {
                           </Fragment>
                       ))}
             </Typography>
+            {product && <ProductCardButton product={product} />}
         </Paper>
     );
 };
