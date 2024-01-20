@@ -56,6 +56,12 @@ public class Shop {
     @JsonIgnore
     private List<Product> products = new ArrayList<Product>();
 
+    @Column(nullable = false)
+    private double latitute;
+
+    @Column(nullable = false)
+    private double longitude;
+
     public LocalDate getCreatedAt() {
         return createdAt;
     }
