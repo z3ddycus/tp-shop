@@ -41,6 +41,7 @@ const ProductForm = () => {
                 description: '',
             },
         ],
+        promotionPrice: null,
     });
 
     const getProduct = (productId: string) => {
@@ -130,6 +131,34 @@ const ProductForm = () => {
         setProduct({ ...product, price: Number(convertedPrice.toFixed(2)) });
     };
 
+    const setPromotionPrice = (promotionPrice: string) => {
+        // If the promotion price is null then we set it to null
+        if (promotionPrice === '') {
+            setProduct({ ...product, promotionPrice: null });
+            setErrors({ ...errors, promotionPrice: null });
+            return;
+        }
+
+        // Otherwise convert the price to number
+        const convertedPrice = parseFloat(promotionPrice);
+
+        // Check the value
+        if (convertedPrice >= product.price) {
+            setProduct({ ...product, promotionPrice: convertedPrice });
+            setErrors({ ...errors, promotionPrice: 'Le prix de réduction est supérieur au prix original.' });
+            return;
+        }
+
+        // Update the product
+        if (Number.isNaN(convertedPrice)) {
+            setProduct({ ...product, promotionPrice: null });
+            setErrors({ ...errors, promotionPrice: null });
+            return;
+        }
+        setProduct({ ...product, promotionPrice: Number(convertedPrice.toFixed(2)) });
+        setErrors({ ...errors, promotionPrice: null });
+    };
+
     const setShop = (shop: any) => {
         const newShop = shop.name === 'Aucune' ? null : shop;
         setProduct({ ...product, shop: newShop });
@@ -215,15 +244,31 @@ const ProductForm = () => {
                         sx={{ width: '50%' }}
                     />
 
-                    <Box sx={{ width: '50%' }}>
-                        <SelectPaginate
-                            value={product.shop}
-                            onChange={setShop}
-                            placeholder="Boutique"
-                            refetch={ShopService.getShops}
-                            defaultLabel="Aucune"
-                        />
-                    </Box>
+                    <TextField
+                        autoFocus
+                        required
+                        type="number"
+                        label="Réduction (vide si aucune)"
+                        value={product.promotionPrice?.toString() ?? ''}
+                        onChange={(e) => setPromotionPrice(e.target.value)}
+                        fullWidth
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">€</InputAdornment>,
+                        }}
+                        error={!!errors.promotionPrice}
+                        helperText={errors.promotionPrice}
+                        sx={{ width: '50%' }}
+                    />
+                </Box>
+
+                <Box sx={{ mt: 2 }}>
+                    <SelectPaginate
+                        value={product.shop}
+                        onChange={setShop}
+                        placeholder="Boutique"
+                        refetch={ShopService.getShops}
+                        defaultLabel="Aucune"
+                    />
                 </Box>
 
                 <Box sx={{ mt: 2 }}>
