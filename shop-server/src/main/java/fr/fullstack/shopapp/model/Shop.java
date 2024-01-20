@@ -94,6 +94,22 @@ public class Shop {
         return this.products;
     }
 
+    public double getLatitute() {
+        return this.latitute;
+    }
+
+    public double getLongitude() {
+        return this.longitude;
+    }
+
+    public void setLatitute(double latitute) {
+        this.latitute = latitute;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
