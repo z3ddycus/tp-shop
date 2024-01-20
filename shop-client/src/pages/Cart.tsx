@@ -3,10 +3,27 @@ import { useShoppingCart } from '../hooks/useShoppingCart';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { formatterLocalizedProduct } from '../utils';
 import { useAppContext } from '../context';
+import { useEffect, useState } from 'react';
+import { Product } from '../types';
+import { ProductService } from '../services';
 
 const Cart = () => {
     const { items, removeItem } = useShoppingCart();
     const { locale } = useAppContext();
+    const [products, setProducts] = useState<Product[]>([]);
+
+    const onRemove = (product: Product) => {
+        removeItem(product);
+        setProducts((products) => products.filter((item) => item.id !== product.id));
+    };
+
+    useEffect(() => {
+        items.forEach((item) => {
+            ProductService.getProduct(item.id.toString()).then((e) => {
+                setProducts((products) => [...products.filter((i) => i.id !== e.data.id), e.data]);
+            });
+        });
+    }, []);
 
     return (
         <>
@@ -21,10 +38,10 @@ const Cart = () => {
                     marginTop: '50px',
                 }}
             >
-                {items.length === 0 ? (
+                {products.length === 0 ? (
                     <p>Votre panier est vide.</p>
                 ) : (
-                    items.map((item, index) => {
+                    products.map((item, index) => {
                         const product = formatterLocalizedProduct(item, locale);
                         return (
                             <Paper
@@ -39,7 +56,7 @@ const Cart = () => {
                                 }}
                             >
                                 <Typography variant="h6">{product.name}</Typography>
-                                <Button variant="contained" color="error" onClick={() => removeItem(item)}>
+                                <Button variant="contained" color="error" onClick={() => onRemove(item)}>
                                     <RemoveShoppingCartIcon />
                                     SUPPRIMER DU PANIER
                                 </Button>
