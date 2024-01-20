@@ -42,6 +42,13 @@ public class Product {
     @NotNull(message = "Price may not be null")
     private float price;
 
+    /**
+     * The promotion price if there is one.
+     */
+    @Column
+    @PositiveOrZero(message = "Promotion price must be positive")
+    private Float promotionPrice;
+
     @ManyToOne
     private Shop shop;
 
@@ -84,4 +91,13 @@ public class Product {
     public void setShop(Shop shop) {
         this.shop = shop;
     }
+
+    public Float getPromotionPrice() {
+        return promotionPrice;
+    }
+
+    public void setPromotionPrice(Float promotionPrice) {
+        this.promotionPrice = promotionPrice;
+    }
+
 }
