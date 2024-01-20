@@ -1,4 +1,4 @@
-package fr.fullstack.shopapp.model;
+package fr.fullstack.shopapp;
 
 import fr.fullstack.shopapp.ShopAppApplication;
 import org.junit.jupiter.api.Test;
@@ -16,4 +16,5 @@ public class ShopAppIntegrationTest {
     public void shouldStartContext() {
 
     }
+
 }

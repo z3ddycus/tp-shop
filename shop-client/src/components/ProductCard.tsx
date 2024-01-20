@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context';
 import { FormattedProduct, Product } from '../types';
-import { formatterLocalizedProduct, priceFormatter } from '../utils';
+import { formatterLocalizedProduct } from '../utils';
+import PriceDisplayer from './PriceDisplayer';
 
 type Props = {
     product: Product;
@@ -30,7 +31,9 @@ const ProductCard = ({ product, displayShop = false }: Props) => {
                 <Typography variant="h4" color="text.primary" gutterBottom>
                     {formattedProduct.name}
                 </Typography>
-                <Typography variant="h6">Prix : {priceFormatter(formattedProduct.price)}</Typography>
+                <Typography variant="h6">
+                    Prix : <PriceDisplayer price={formattedProduct.price} reduction={formattedProduct.promotionPrice} />
+                </Typography>
                 {formattedProduct.description && (
                     <Typography sx={{ mt: 1.5, maxHeight: 50, overflow: 'hidden' }} color="text.secondary">
                         {formattedProduct.description}

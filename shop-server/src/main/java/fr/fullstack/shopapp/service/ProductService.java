@@ -23,6 +23,14 @@ public class ProductService {
 
     @Transactional
     public Product createProduct(Product product) throws Exception {
+        // Check product values
+        if (product.getPromotionPrice() != null && product.getPromotionPrice() < 0) {
+            throw new Exception("The promotion price must be greater than 0.");
+        }
+        if (product.getPromotionPrice() != null && product.getPromotionPrice() >= product.getPrice()) {
+            throw new Exception("The promotion price must be less than the original price.");
+        }
+
         // Check that product exists at least in french and check name's length
         try {
             checkLocalizedProducts(product);

@@ -32,6 +32,16 @@ public class LocalizedProduct {
     @NotNull(message = "Name may not be null")
     private String name;
 
+    public LocalizedProduct() {
+    }
+
+    public LocalizedProduct(long id, String description, String locale, String name) {
+        this.id = id;
+        this.description = description;
+        this.locale = locale;
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
     }
