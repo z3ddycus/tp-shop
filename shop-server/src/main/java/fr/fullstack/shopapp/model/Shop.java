@@ -56,6 +56,21 @@ public class Shop {
     @JsonIgnore
     private List<Product> products = new ArrayList<Product>();
 
+    public Shop() {
+        this(0L, LocalDate.now(), false, "Boutique", 0L, 0L, List.of(), List.of());
+    }
+
+    public Shop(long id, LocalDate createdAt, boolean inVacations, String name, Long nbCategories, Long nbProducts, List<@Valid OpeningHoursShop> openingHours, List<Product> products) {
+        this.createdAt = createdAt;
+        this.id = id;
+        this.inVacations = inVacations;
+        this.name = name;
+        this.nbCategories = nbCategories;
+        this.nbProducts = nbProducts;
+        this.openingHours = openingHours;
+        this.products = products;
+    }
+
     public LocalDate getCreatedAt() {
         return createdAt;
     }

@@ -52,6 +52,18 @@ public class Product {
     @ManyToOne
     private Shop shop;
 
+    public Product() {
+    }
+
+    public Product(long id, List<Category> categories, List<@Valid LocalizedProduct> localizedProduct, float price, Float promotionPrice, Shop shop) {
+        this.categories = categories;
+        this.id = id;
+        this.localizedProduct = localizedProduct;
+        this.price = price;
+        this.promotionPrice = promotionPrice;
+        this.shop = shop;
+    }
+
     public List<Category> getCategories() {
         return categories;
     }
