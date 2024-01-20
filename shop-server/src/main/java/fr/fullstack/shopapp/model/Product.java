@@ -1,7 +1,5 @@
 package fr.fullstack.shopapp.model;
 
-import org.springframework.boot.context.properties.bind.DefaultValue;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
