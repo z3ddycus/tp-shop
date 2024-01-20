@@ -8,15 +8,14 @@ export function useShoppingCart() {
     const [items, setItems] = useLocalStorage<ShoppingCart>('shopping-cart', []);
 
     const addItem = (product: Product) => {
-        if (items.includes(product)) return;
+        if (items.some((item) => item.id === product.id)) return;
         setItems((items) => [...items, product]);
     };
 
-    const hasItem = (product: Product) => items.includes(product);
+    const hasItem = (product: Product) => items.some((item) => item.id === product.id);
 
     const removeItem = (product: Product) => {
-        if (!items.includes(product)) return;
-        setItems((items) => items.filter((item) => item !== product));
+        setItems((items) => items.filter((item) => item.id !== product.id));
     };
 
     return {
