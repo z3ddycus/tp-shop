@@ -64,6 +64,11 @@ const ProductDetails = () => {
             <Typography variant="h3" sx={{ textAlign: 'center', marginBottom: 3 }}>
                 {formattedProduct.name}
             </Typography>
+            <img
+                src={formattedProduct.imageUrl ?? 'https://placehold.co/600x400'}
+                alt={formattedProduct.name}
+                style={{ width: '100%', height: 400, objectFit: 'cover' }}
+            />
             <Typography variant="h6">Prix : {priceFormatter(formattedProduct.price)}</Typography>
             {formattedProduct.description && (
                 <Typography sx={{ mt: 1.5 }} color="text.secondary">
