@@ -148,6 +148,11 @@ const ProductForm = () => {
             setErrors({ ...errors, promotionPrice: 'Le prix de réduction est supérieur au prix original.' });
             return;
         }
+        if (convertedPrice < 0) {
+            setProduct({ ...product, promotionPrice: convertedPrice });
+            setErrors({ ...errors, promotionPrice: 'Le prix de réduction doit être supérieur à 0.' });
+            return;
+        }
 
         // Update the product
         if (Number.isNaN(convertedPrice)) {
