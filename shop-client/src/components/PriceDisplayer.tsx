@@ -31,12 +31,16 @@ const PriceDisplayer = ({ price, reduction }: PriceDisplayerProps) => {
     }
 
     // Show the price and the reduction
+    const reductionPercent = Math.round(((price - reduction) / price) * 100);
     return (
         <Stack direction="row" spacing={1.5} sx={{ display: 'inline-block' }}>
             <Box component="span" sx={{ fontSize: '0.8em', color: 'gray', textDecorationLine: 'line-through' }}>
                 {priceFormatter(price)}
             </Box>
-            <Box component="span">{priceFormatter(reduction)}</Box>
+            <Box component="span">
+                {priceFormatter(reduction)} (
+                {reductionPercent < 0 ? '+' + reductionPercent * -1 : '-' + reductionPercent}%)
+            </Box>
         </Stack>
     );
 };
