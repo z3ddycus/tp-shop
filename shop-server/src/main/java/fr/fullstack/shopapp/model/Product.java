@@ -42,8 +42,15 @@ public class Product {
     @NotNull(message = "Price may not be null")
     private float price;
 
+    private boolean isLiked;
     @ManyToOne
     private Shop shop;
+
+    public boolean isLiked(){
+        return  isLiked;
+    }
+
+
 
     public List<Category> getCategories() {
         return categories;
@@ -83,5 +90,8 @@ public class Product {
 
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+    public void setLiked(boolean liked) {
+        this.isLiked = liked;
     }
 }

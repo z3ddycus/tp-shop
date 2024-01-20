@@ -11,6 +11,7 @@ const navItems = [
     { label: 'Boutiques', path: '/' },
     { label: 'Produits', path: '/product' },
     { label: 'Catégories', path: '/category' },
+    { label: 'Wishlist', path: '/wishlist' },
 ];
 
 const Layout = ({ children }: Props) => {

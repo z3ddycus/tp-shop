@@ -7,6 +7,7 @@ import {
     Products,
     ShopDetails,
     ShopForm,
+    Wishlist,
 } from '../pages';
 import CategoryForm from '../pages/CategoryForm';
 
@@ -76,6 +77,11 @@ const routes: Routes = [
         name: 'EditCategory',
         path: '/category/edit/:id',
         element: CategoryForm,
+    },
+    {
+        name: 'Wishlist',
+        path: '/wishlist',
+        element: Wishlist,
     },
 ];
 

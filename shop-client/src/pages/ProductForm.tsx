@@ -29,6 +29,7 @@ const ProductForm = () => {
         price: 0,
         shop: null,
         categories: [],
+        isLiked: false,
         localizedProducts: [
             {
                 locale: Locale.FR,

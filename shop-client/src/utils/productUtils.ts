@@ -28,7 +28,11 @@ export const getLocalizedProduct = (
  */
 export const formatterLocalizedProduct = (product: Product, locale: Language) => {
     const localizedProduct = getLocalizedProduct(product.localizedProducts, locale);
-    return { ...product, name: localizedProduct.name, description: localizedProduct.description };
+    return {
+        ...product,
+        name: localizedProduct.name,
+        description: localizedProduct.description,
+    };
 };
 
 /**
