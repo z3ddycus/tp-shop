@@ -7,6 +7,8 @@ import { ShopService } from '../services';
 import { Shop } from '../types';
 import { useAppContext, useToastContext } from '../context';
 import { pluralize } from '../utils';
+import { WorldMap } from '../components/WolrdMap';
+import { Marker } from 'react-leaflet';
 
 const DAY: Record<number, string> = {
     1: 'Lundi',
@@ -117,6 +119,10 @@ const ShopDetails = () => {
                     </Box>
                 ))}
             </Box>
+
+            <WorldMap style={{ height: 300 }} worldCopyJump>
+                <Marker position={[shop.latitude, shop.longitude]} />
+            </WorldMap>
 
             <Typography variant="h4" sx={{ textAlign: 'center', mb: 2 }}>
                 Les produits :
