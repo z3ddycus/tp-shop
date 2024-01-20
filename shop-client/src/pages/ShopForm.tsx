@@ -232,8 +232,7 @@ const ShopForm = () => {
                     <WorldMap style={{ height: 300 }} worldCopyJump>
                         <MarkerInput
                             onMove={(p) => {
-                                setShop({ ...shop, latitude: p.lat });
-                                setShop({ ...shop, latitude: p.lng });
+                                setShop({ ...shop, latitude: p.lat, longitude: p.lng });
                             }}
                         />
                     </WorldMap>
