@@ -6,9 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context';
 import { FormattedProduct, Product } from '../types';
 import { formatterLocalizedProduct, priceFormatter } from '../utils';
-import { useShoppingCart } from '../hooks/useShoppingCart';
-import { Box, Button } from '@mui/material';
-import { AddShoppingCart, RemoveShoppingCart } from '@mui/icons-material';
+import { Box } from '@mui/material';
+import ProductCardButton from './ProductCartButton';
 
 type Props = {
     product: Product;
@@ -21,7 +20,6 @@ const ProductCard = ({ product, displayShop = false }: Props) => {
     const [formattedProduct, setFormattedProduct] = useState<FormattedProduct>(
         formatterLocalizedProduct(product, locale),
     );
-    const shoppingCart = useShoppingCart();
 
     useEffect(() => setFormattedProduct(formatterLocalizedProduct(product, locale)), [locale]);
 
@@ -59,33 +57,7 @@ const ProductCard = ({ product, displayShop = false }: Props) => {
                                   ))}
                         </Typography>
                     </Box>
-                    {shoppingCart.hasItem(product) ? (
-                        <Button
-                            color="error"
-                            fullWidth
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                shoppingCart.removeItem(product);
-                            }}
-                            startIcon={<RemoveShoppingCart />}
-                            variant="contained"
-                        >
-                            Retirer du panier
-                        </Button>
-                    ) : (
-                        <Button
-                            color="success"
-                            fullWidth
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                shoppingCart.addItem(product);
-                            }}
-                            startIcon={<AddShoppingCart />}
-                            variant="contained"
-                        >
-                            Ajouter au panier
-                        </Button>
-                    )}
+                    <ProductCardButton product={product} />
                 </Box>
             </CardContent>
         </Card>
