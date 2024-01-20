@@ -23,7 +23,7 @@ create table opening_hours (
 create table products (
     id int8 not null,
     price float4 not null,
-    promotion_price float4 not null,
+    promotion_price float4,
     shop_id int8,
     primary key (id)
 );
