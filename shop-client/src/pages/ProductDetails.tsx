@@ -5,7 +5,8 @@ import { ActionButtons } from '../components';
 import { useAppContext, useToastContext } from '../context';
 import { ProductService } from '../services';
 import { FormattedProduct, Product } from '../types';
-import { formatterLocalizedProduct, priceFormatter } from '../utils';
+import { formatterLocalizedProduct } from '../utils';
+import PriceDisplayer from '../components/PriceDisplayer';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -64,7 +65,9 @@ const ProductDetails = () => {
             <Typography variant="h3" sx={{ textAlign: 'center', marginBottom: 3 }}>
                 {formattedProduct.name}
             </Typography>
-            <Typography variant="h6">Prix : {priceFormatter(formattedProduct.price)}</Typography>
+            <Typography variant="h6">
+                Prix : <PriceDisplayer price={formattedProduct.price} reduction={formattedProduct.promotionPrice} />
+            </Typography>
             {formattedProduct.description && (
                 <Typography sx={{ mt: 1.5 }} color="text.secondary">
                     Description : {formattedProduct.description}
