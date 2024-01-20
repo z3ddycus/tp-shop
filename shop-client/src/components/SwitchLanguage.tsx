@@ -54,6 +54,12 @@ const SwitchLanguage = () => {
                 >
                     Anglais
                 </MenuItem>
+                <MenuItem
+                    onClick={() => handleClick(Locale.ES)}
+                    sx={{ backgroundColor: locale == 'ES' ? '#f2f5f6' : 'white' }}
+                >
+                    Espagnol
+                </MenuItem>
             </Menu>
         </div>
     );
