@@ -2,6 +2,7 @@ import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Loader from './Loader';
 import SwitchLanguage from './SwitchLanguage';
+import { ShoppingCart } from '@mui/icons-material';
 
 type Props = {
     children: JSX.Element;
@@ -11,6 +12,7 @@ const navItems = [
     { label: 'Boutiques', path: '/' },
     { label: 'Produits', path: '/product' },
     { label: 'Catégories', path: '/category' },
+    { label: <ShoppingCart />, path: '/cart' },
 ];
 
 const Layout = ({ children }: Props) => {
@@ -26,7 +28,7 @@ const Layout = ({ children }: Props) => {
                     <Box sx={{ flexGrow: 1 }} />
                     <Box>
                         {navItems.map((item) => (
-                            <Button key={item.label} sx={{ color: '#fff' }} onClick={() => navigate(item.path)}>
+                            <Button key={item.path} sx={{ color: '#fff' }} onClick={() => navigate(item.path)}>
                                 {item.label}
                             </Button>
                         ))}

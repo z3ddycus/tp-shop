@@ -8,6 +8,7 @@ import {
     ShopDetails,
     ShopForm,
 } from '../pages';
+import Cart from '../pages/Cart';
 import CategoryForm from '../pages/CategoryForm';
 
 type Routes = {
@@ -76,6 +77,11 @@ const routes: Routes = [
         name: 'EditCategory',
         path: '/category/edit/:id',
         element: CategoryForm,
+    },
+    {
+        name: 'Cart',
+        path: '/cart',
+        element: Cart,
     },
 ];
 
