@@ -1,0 +1,65 @@
+import React, { useState } from 'react';
+import { Modal, Box, Typography, Button, TextField, Tabs, Tab } from '@mui/material';
+
+type LoginSignupModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+};
+
+const LoginSignupModal = ({ isOpen, onClose }: LoginSignupModalProps) => {
+    const [activeTab, setActiveTab] = useState(0);
+
+    const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
+        setActiveTab(newValue);
+    };
+
+    return (
+        <Modal open={isOpen} onClose={onClose}>
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    bgcolor: 'background.paper',
+                    boxShadow: 24,
+                    p: 4,
+                    borderRadius: 2,
+                    minWidth: '300px',
+                }}
+            >
+                <Tabs value={activeTab} onChange={handleChangeTab} centered>
+                    <Tab label="Login" />
+                    <Tab label="Signup" />
+                </Tabs>
+                {activeTab === 0 && (
+                    <Box p={3}>
+                        <TextField fullWidth label="Email" margin="normal" />
+                        <TextField fullWidth label="Password" margin="normal" type="password" />
+                        <Button fullWidth variant="contained" sx={{ mt: 2, mb: 2 }}>
+                            Login
+                        </Button>
+                        {/* Include social login options here if needed */}
+                    </Box>
+                )}
+                {activeTab === 1 && (
+                    <Box p={3}>
+                        <TextField fullWidth label="Name" margin="normal" />
+                        <TextField fullWidth label="Email" margin="normal" />
+                        <TextField fullWidth label="Password" margin="normal" type="password" />
+                        <TextField fullWidth label="Confirm Password" margin="normal" type="password" />
+                        <Button fullWidth variant="contained" sx={{ mt: 2, mb: 2 }}>
+                            Signup
+                        </Button>
+                        {/* Include social signup options here if needed */}
+                    </Box>
+                )}
+                <Box textAlign="center">
+                    <Button onClick={onClose}>Close</Button>
+                </Box>
+            </Box>
+        </Modal>
+    );
+};
+
+export default LoginSignupModal;
