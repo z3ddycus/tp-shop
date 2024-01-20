@@ -57,7 +57,7 @@ public class Shop {
     private List<Product> products = new ArrayList<Product>();
 
     @Column(nullable = false)
-    private double latitute;
+    private double latitude;
 
     @Column(nullable = false)
     private double longitude;
@@ -94,16 +94,16 @@ public class Shop {
         return this.products;
     }
 
-    public double getLatitute() {
-        return this.latitute;
+    public double getLatitude() {
+        return this.latitude;
     }
 
     public double getLongitude() {
         return this.longitude;
     }
 
-    public void setLatitute(double latitute) {
-        this.latitute = latitute;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
     public void setLongitude(double longitude) {

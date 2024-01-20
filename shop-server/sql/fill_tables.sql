@@ -12,7 +12,7 @@ insert into opening_hours (id, day, open_at, close_at) values (4, 5, '08:00:00',
 insert into shops_opening_hours (shop_id, opening_hours_id) values (1, 4);
 
 
-insert into shops (id, name, created_at, in_vacations, latitute, longitude) values (5, 'Boutique 2', '2012-06-25', true, 48.8588897, 2.320041);
+insert into shops (id, name, created_at, in_vacations, latitude, longitude) values (5, 'Boutique 2', '2012-06-25', true, 48.8588897, 2.320041);
 
 insert into opening_hours (id, day, open_at, close_at) values (6, 1, '08:45:00', '17:30:00');
 insert into shops_opening_hours (shop_id, opening_hours_id) values (5, 6);
@@ -27,7 +27,7 @@ insert into opening_hours (id, day, open_at, close_at) values (9, 4, '08:45:00',
 insert into shops_opening_hours (shop_id, opening_hours_id) values (5, 9);
 
 
-insert into shops (id, name, created_at, in_vacations, latitute, longitude) values (10, 'Boutique 3', '2022-01-09', false, 49.4178154, 0.5434638);
+insert into shops (id, name, created_at, in_vacations, latitude, longitude) values (10, 'Boutique 3', '2022-01-09', false, 49.4178154, 0.5434638);
 
 insert into opening_hours (id, day, open_at, close_at) values (11, 6, '08:45:00', '20:30:00');
 insert into shops_opening_hours (shop_id, opening_hours_id) values (10, 11);

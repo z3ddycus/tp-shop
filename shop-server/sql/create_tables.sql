@@ -42,7 +42,7 @@ create table shops (
     created_at date not null,
     in_vacations boolean not null,
     name varchar(255) not null,
-    latitute double not null,
+    latitude double not null,
     longitude double not null,
     primary key (id)
 );
