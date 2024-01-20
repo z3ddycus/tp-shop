@@ -30,6 +30,9 @@ public class Category {
     @JsonIgnore
     private List<Product> products = new ArrayList<Product>();
 
+    @Column(nullable = true)
+    private String imageUrl;
+
     public long getId() {
         return id;
     }
@@ -52,5 +55,11 @@ public class Category {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+    public String getImageUrl(){
+        return this.imageUrl;
+    }
+    public void setImageUrl(String imageUrl){
+        this.imageUrl = imageUrl;
     }
 }

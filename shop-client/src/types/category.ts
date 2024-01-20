@@ -1,5 +1,6 @@
 type CategoryBase = {
     name: string;
+    imageUrl: string;
 };
 
 export type Category = {

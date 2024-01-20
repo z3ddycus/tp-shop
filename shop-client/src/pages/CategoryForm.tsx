@@ -18,6 +18,7 @@ const CategoryForm = () => {
     const [errors, setErrors] = useState<ObjectPropertyString<MinimalCategory>>();
     const [category, setCategory] = useState<MinimalCategory>({
         name: '',
+        imageUrl: '',
     });
 
     const getCategory = (categoryId: string) => {
@@ -105,6 +106,14 @@ const CategoryForm = () => {
                     onChange={(e) => setCategory({ ...category, name: e.target.value })}
                     error={!!errors?.name}
                     helperText={errors?.name}
+                    sx={{ my: 2, width: '75%', ml: 'auto', mr: 'auto' }}
+                />
+                <TextField
+                    autoFocus
+                    required={false}
+                    label="Image Url"
+                    value={category.imageUrl}
+                    onChange={(e) => setCategory({ ...category, imageUrl: e.target.value })}
                     sx={{ my: 2, width: '75%', ml: 'auto', mr: 'auto' }}
                 />
             </FormControl>
