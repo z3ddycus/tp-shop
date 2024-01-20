@@ -56,6 +56,12 @@ public class Shop {
     @JsonIgnore
     private List<Product> products = new ArrayList<Product>();
 
+    @Column(nullable = false)
+    private double latitute;
+
+    @Column(nullable = false)
+    private double longitude;
+
     public LocalDate getCreatedAt() {
         return createdAt;
     }
@@ -86,6 +92,22 @@ public class Shop {
 
     public List<Product> getProducts() {
         return this.products;
+    }
+
+    public double getLatitute() {
+        return this.latitute;
+    }
+
+    public double getLongitude() {
+        return this.longitude;
+    }
+
+    public void setLatitute(double latitute) {
+        this.latitute = latitute;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public void setId(long id) {
