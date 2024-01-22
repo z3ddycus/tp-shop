@@ -12,8 +12,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query(value = "SELECT * FROM Products WHERE shop_id = ?1", nativeQuery = true)
     Page<Product> findByShop(Long shopId, Pageable pageable);
 
+    @Query("SELECT p FROM Product p JOIN p.localizedProduct lp WHERE lp.name LIKE %:name%")
+    Page<Product> findByLocalizedProductName(String name, Pageable pageable);
+
     @Query(value = "SELECT * FROM Products p WHERE p.shop_id = ?1 AND p.id IN (SELECT pc.product_id FROM "
-            + "products_categories pc WHERE pc.category_id = ?2)",
-           nativeQuery = true)
+            + "products_categories pc WHERE pc.category_id = ?2)", nativeQuery = true)
     Page<Product> findByShopAndCategory(Long shopId, Long categoryId, Pageable pageable);
 }

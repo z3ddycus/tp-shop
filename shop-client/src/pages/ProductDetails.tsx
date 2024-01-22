@@ -79,6 +79,7 @@ const ProductDetails = () => {
                 ) : (
                     "N'appartient à aucune boutique"
                 )}
+
             </Typography>
             <Typography sx={{ mt: 1.5, fontStyle: 'italic' }}>
                 Catégories : {''}
