@@ -29,6 +29,7 @@ const ProductForm = () => {
         price: 0,
         shop: null,
         categories: [],
+        imageUrl: '',
         localizedProducts: [
             {
                 locale: Locale.FR,
@@ -130,6 +131,15 @@ const ProductForm = () => {
         setProduct({ ...product, price: Number(convertedPrice.toFixed(2)) });
     };
 
+    const setImageUrl = (imageUrl: string) => {
+        // check is url or empty, put null in that case
+        if (imageUrl.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+            setProduct({ ...product, imageUrl: imageUrl });
+            return;
+        }
+        setProduct({ ...product, imageUrl: '' });
+    }
+
     const setShop = (shop: any) => {
         const newShop = shop.name === 'Aucune' ? null : shop;
         setProduct({ ...product, shop: newShop });
@@ -194,6 +204,16 @@ const ProductForm = () => {
                         onChange={(e) => handleChange(Locale.EN, 'description', e.target.value)}
                         fullWidth
                         sx={{ width: '50%' }}
+                    />
+                </Box>
+                <Divider>URL de l'image</Divider>
+                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4, mt: 2, mb: 6 }}>
+                    <TextField
+                        autoFocus
+                        label="URL de l'image"
+                        value={product.imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                        fullWidth
                     />
                 </Box>
 

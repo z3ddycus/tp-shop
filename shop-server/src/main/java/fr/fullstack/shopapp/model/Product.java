@@ -45,6 +45,9 @@ public class Product {
     @ManyToOne
     private Shop shop;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     public List<Category> getCategories() {
         return categories;
     }
@@ -84,4 +87,13 @@ public class Product {
     public void setShop(Shop shop) {
         this.shop = shop;
     }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 }

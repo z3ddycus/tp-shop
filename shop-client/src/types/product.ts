@@ -19,6 +19,7 @@ type ProductBase = {
     price: number;
     shop: Shop | null;
     categories: Category[];
+    imageUrl: string;
 };
 
 export type Product = {

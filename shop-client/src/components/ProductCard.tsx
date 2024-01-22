@@ -23,10 +23,15 @@ const ProductCard = ({ product, displayShop = false }: Props) => {
 
     return (
         <Card
-            sx={{ minWidth: 275, height: displayShop ? 270 : 230, cursor: 'pointer' }}
+            sx={{ minWidth: 275, height: displayShop ? 400 : 230, cursor: 'pointer' }}
             onClick={() => navigate(`/product/${formattedProduct.id}`)}
         >
             <CardContent>
+                <img
+                    src={formattedProduct.imageUrl ?? 'https://placehold.co/600x400'}
+                    alt={formattedProduct.name}
+                    style={{ width: '100%', height: 150, objectFit: 'cover' }}
+                />
                 <Typography variant="h4" color="text.primary" gutterBottom>
                     {formattedProduct.name}
                 </Typography>
