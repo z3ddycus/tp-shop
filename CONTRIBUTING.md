@@ -51,3 +51,4 @@ Format : Prénom Nom et optionnellement le github.
 - Hugo Mochet https://github.com/Ydrasil
 - Manon Guillard
 - Yohann Henry https://github.com/z3ddycus
+- Berkay Karakaya
