@@ -1,4 +1,4 @@
-import { Paper, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppContext, useToastContext } from '../context';
@@ -54,10 +54,16 @@ const CategoryDetails = () => {
             }}
         >
             <ActionButtons handleDelete={handleDelete} handleEdit={handleEdit} />
-
-            <Typography variant="h3" sx={{ textAlign: 'center' }}>
-                {category.name}
-            </Typography>
+            <Box sx={{display:'flex',flexDirection:'column',justifyItems:'center',alignItems:'center'}}>
+                <Typography variant="h3" sx={{ textAlign: 'center' }}>
+                    {category.name}
+                </Typography>
+                <Box sx={{width:'250px'}}>
+                    <img onError={(ev) => ev.currentTarget.src=`${process.env.REACT_APP_DEFAULT_CATEGORY_IAMGE_URL}`}
+                    src={category.imageUrl || `${process.env.REACT_APP_DEFAULT_CATEGORY_IAMGE_URL}`} style={{height:'auto',width:'100%'}}/>
+                </Box>
+            </Box>
+            
         </Paper>
     );
 };
