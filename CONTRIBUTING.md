@@ -51,3 +51,5 @@ Format : Prénom Nom et optionnellement le github.
 - Hugo Mochet https://github.com/Ydrasil
 - Manon Guillard
 - Yohann Henry https://github.com/z3ddycus
+- Romain Hébert
+- Ahmed Yassine Faik
