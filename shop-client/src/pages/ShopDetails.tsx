@@ -120,7 +120,7 @@ const ShopDetails = () => {
                 ))}
             </Box>
 
-            <WorldMap style={{ height: 300 }} worldCopyJump>
+            <WorldMap style={{ height: 300 }} center={{ lat: shop.latitude, lng: shop.longitude }} worldCopyJump>
                 <Marker position={[shop.latitude, shop.longitude]} />
             </WorldMap>
 
