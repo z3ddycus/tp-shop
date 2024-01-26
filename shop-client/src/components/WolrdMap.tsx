@@ -17,13 +17,7 @@ L.Marker.prototype.setIcon(
 const DEFAULT_POSITION = [46.227638, 2.213749] satisfies LatLngExpression;
 const DEFAULT_ZOOM = 5;
 
-type MapProps = {
-  noFly?: boolean;
-  withoutNotificationCircle?: boolean;
-  radius?: number;
-} & MapContainerProps;
-
-export function WorldMap({ center, children, noFly, withoutNotificationCircle, radius, ...props }: MapProps) {
+export function WorldMap({ center, children, ...props }: MapContainerProps) {
   return (
     <>
       <MapContainer
