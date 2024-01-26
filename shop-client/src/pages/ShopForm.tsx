@@ -23,6 +23,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Dayjs } from 'dayjs';
 import { MinimalShop, ObjectPropertyString } from '../types';
 import { useAppContext, useToastContext } from '../context';
+import { MarkerInput } from '../components/MarkerInput';
+import { WorldMap } from '../components/WolrdMap';
 
 const schema = (shop: MinimalShop) => ({
     name: shop.name ? '' : 'Ce champ est requis',
@@ -39,6 +41,8 @@ const ShopForm = () => {
         name: '',
         inVacations: false,
         openingHours: [],
+        latitude: 0.0,
+        longitude: 0.0,
     });
 
     const getShop = (shopId: string) => {
@@ -225,6 +229,13 @@ const ShopForm = () => {
                             </Paper>
                         ))}
                     </Box>
+                    <WorldMap style={{ height: 300 }} worldCopyJump>
+                        <MarkerInput
+                            onMove={(p) => {
+                                setShop({ ...shop, latitude: p.lat, longitude: p.lng });
+                            }}
+                        />
+                    </WorldMap>
                 </Box>
 
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>

@@ -8,6 +8,8 @@ export type Shop = {
     openingHours: OpeningHours[];
     nbProducts: number;
     nbCategories: number;
+    latitude: number;
+    longitude: number;
 };
 
 export type MinimalShop = {
@@ -15,4 +17,6 @@ export type MinimalShop = {
     name: string;
     inVacations: boolean;
     openingHours: { day: number; openAt: string; closeAt: string }[];
+    latitude: number;
+    longitude: number;
 };
