@@ -35,9 +35,11 @@ services:
 
   front:
     container_name: shop-client
-    build: ./shop-client
+    build:
+      context: ./shop-client
+      dockerfile: ./Dockerfile
     ports:
-      - "4200:4200"
+      - "4200:80"
 
 networks:
   postgres:

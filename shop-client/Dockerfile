@@ -1,20 +1,23 @@
 # Use a lighter version of Node as a parent image
-FROM node:19-alpine
+FROM node:19-alpine AS BUILD_IMAGE
 
-# Set the working directory to /app
+# Copy the source files inside the image
 WORKDIR /app
+COPY . .
 
-# copy package.json into the container at /app
-COPY package.json /app/package.json
-
-# install dependencies
+# Install the dependencies and build the application
 RUN npm install
+RUN npm run build
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+FROM nginx:alpine AS PRODUCTION_IMAGE
 
-# Expose port
-EXPOSE 4200
+# Copy Nginx config
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Run the app when the container launches
-CMD ["npm", "start"]
+# Copy the built files inside an nginx server
+COPY --from=BUILD_IMAGE /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+# Run the nginx server
+CMD ["nginx", "-g", "daemon off;"]
