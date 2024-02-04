@@ -49,5 +49,7 @@ Liste des contributions par ordre alphabétique.
 Format : Prénom Nom et optionnellement le github.
 
 - Hugo Mochet https://github.com/Ydrasil
+- Jordan Elie
 - Manon Guillard
+- Sébastien Guerrier
 - Yohann Henry https://github.com/z3ddycus
